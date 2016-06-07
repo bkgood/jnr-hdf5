@@ -1,45 +1,16 @@
+import de.johoop.testngplugin.TestNGPlugin._
+
 name := """jnr-hdf5"""
 
 version := "0.1-SNAPSHOT"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
+
+resolvers += Resolver.sbtPluginRepo("releases")
 
 libraryDependencies ++= Seq(
   "com.github.jnr" % "jnr-ffi" % "2.0.7",
-  "ch.qos.logback" % "logback-classic" % "1.1.3")
+  "ch.qos.logback" % "logback-classic" % "1.1.3",
+  "org.testng" % "testng" % "6.8.8" % Test)
 
-scalacOptions ++= Seq(
-  "-deprecation",
-  "-encoding", "UTF-8",
-  "-feature",
-  "-language:existentials",
-  "-language:higherKinds",
-  "-language:implicitConversions",
-  "-unchecked",
-  "-Xfatal-warnings",
-  "-Xlint",
-  "-Yno-adapted-args",
-  "-Ywarn-dead-code",        // N.B. doesn't work well with the ??? hole
-  "-Ywarn-numeric-widen",
-  "-Ywarn-value-discard",
-  "-Xfuture",
-  //"-Ywarn-unused-import",     // 2.11 only
-  // not actually a masochist
-  //"-Yno-predef",
-  //"-Yno-imports"
-  // nonsense
-  "-Xlog-free-terms",
-  "-Xlog-free-types",
-  "-Xlog-reflective-calls",
-  //"-Xexperimental",
-  "-target:jvm-1.8",
-  "-Ybackend:GenBCode",
-  "-Ydelambdafy:method",
-
-  "-Ywarn-nullary-override",
-  "-Ywarn-nullary-unit",
-  "-Ywarn-unused",
-  "-Ywarn-value-discard"
-)
-
-//mainClass in compile := Some("ProductionServer")
+testNGSettings
